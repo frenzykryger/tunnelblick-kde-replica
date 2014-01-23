@@ -1,0 +1,8 @@
+{
+	"services": ["client-vpn", "corporate-vpn"],
+	"on-click": ["client-vpn"],
+	"chains": {
+			"Connect from home" : ["corporate-vpn", "client-vpn"]
+		  }
+}
+
