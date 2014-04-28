@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import json
 import sys
 import traceback
@@ -31,7 +32,7 @@ class SystemTrayIcon(QtGui.QSystemTrayIcon):
         exitAction.triggered.connect(QtGui.qApp.quit)
         self.setContextMenu(menu)
         self.timer.timeout.connect(self.poll_status)
-        self.timer.start(2000)
+        self.timer.start(5000)
 
     def chain_connect(self, on_click):
         for service in on_click:
@@ -62,7 +63,7 @@ class SystemTrayIcon(QtGui.QSystemTrayIcon):
             if self.status.get(service) != service_status:
                 notify_send(service_status).wait()
             self.status[service] = service_status
-
+        self.setToolTip("\n".join(self.status.values()))
 
 def main():
     with open("conf.json", "r") as f:
