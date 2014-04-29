@@ -65,13 +65,13 @@ class SystemTrayIcon(QtGui.QSystemTrayIcon):
             self.status[service] = service_status
         self.setToolTip("\n".join(self.status.values()))
 
-def main():
-    with open("conf.json", "r") as f:
+def main(conf_path):
+    with open(conf_path, "r") as f:
         conf = json.loads(f.read())
     app = QtGui.QApplication(sys.argv)
 
     w = QtGui.QWidget()
-    trayIcon = SystemTrayIcon(QtGui.QIcon("Tunnelblick.png"), w,
+    trayIcon = SystemTrayIcon(QtGui.QIcon(conf['icon path']), w,
                               conf=conf)
 
     trayIcon.show()
@@ -79,4 +79,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) < 2:
+        raise RuntimeError("Please specify config location")
+    conf_path = sys.argv[1]
+    main(conf_path)

@@ -33,11 +33,13 @@ Replace "on-click" with one or more openvpn services names that you're want to c
 
 Replace "chains" with dictionary of one or more openvpn services names list (useful to connect several VPNs, for example your corporate VPN, then another VPN)
 
+Replace "icon path" with path to icon you want to see in tray
+
 
 Launch
 ------
 
-Simple run `python tunnelblick-kde.py` from project directory or write own bash wrapper:
+Simple run `python tunnelblick-kde.py <path to conf.json>`:
 
 .. code-block:: bash
 

@@ -1,4 +1,5 @@
 {
+	"icon path": "Tunnelblick.png",
 	"services": ["client-vpn", "corporate-vpn"],
 	"on-click": ["client-vpn"],
 	"chains": {
